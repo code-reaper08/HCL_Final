@@ -71,13 +71,24 @@ function Register() {
   if (isLoading) {
     return (
       <>
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="blue.500"
-          size="xl"
-        />
+        <Box
+          height={{ md: "100vh" }}
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="lightgreen"
+            size="xl"
+          />
+          <Text fontSize="2xl" color="ivory">
+            Please wait while we set up your account
+          </Text>
+        </Box>
       </>
     );
   }

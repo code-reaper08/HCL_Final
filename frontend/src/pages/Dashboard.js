@@ -63,10 +63,12 @@ function Dashboard() {
             thickness="4px"
             speed="0.65s"
             emptyColor="gray.200"
-            color="blue.500"
+            color="lightgreen"
             size="xl"
           />
-          <Text fontSize="2xl">Please wait while we fetch your Tasks</Text>
+          <Text fontSize="2xl" color="ivory">
+            Please wait while we fetch your Tasks
+          </Text>
         </Box>
       </>
     );

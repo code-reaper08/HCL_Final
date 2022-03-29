@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { deleteGoal } from "../features/tasks/taskSlice";
 import { Badge } from "@chakra-ui/react";
 import { GoX, GoPencil } from "react-icons/go";
+import { VscTrash } from "react-icons/vsc";
 import { GoClock } from "react-icons/go";
 import { Text, Box, Button, Tooltip } from "@chakra-ui/react";
 import TaskdrawerEdit from "./TaskdrawerEdit";
@@ -32,7 +33,7 @@ function TaskItem({ goal }) {
               onClick={() => dispatch(deleteGoal(goal._id))}
               className="close"
             >
-              <GoX />
+              <VscTrash />
             </Button>
           </Box>
         </Box>
@@ -41,7 +42,9 @@ function TaskItem({ goal }) {
         <Text fontSize="2xl">{goal.text}</Text>
         <Text color="white">
           <Tooltip
-            label={new Date(goal.createdAt).toLocaleString("en-US")}
+            label={
+              "posted at" + new Date(goal.createdAt).toLocaleString("en-US")
+            }
             openDelay={500}
           >
             <Text bgColor="black" p="1" rounded="full">
