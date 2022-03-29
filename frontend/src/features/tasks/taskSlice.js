@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import taskService from "./taskService";
 
 const initialState = {
@@ -140,22 +140,16 @@ export const goalSlice = createSlice({
       .addCase(updateGoal.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        const updatedGoal = action.payload.data;
-        // state.goals = state.goals.filter(
-        //   (goal) => goal.id !== action.payload.id
-        // );
-        state.goals = state.goals.map((goal) =>
-          goal._id !== action.payload.id
-            ? {
-                ...goal,
-                goal: action.payload.data,
-                // goal: goal,
-                // text: action.payload.data,
-                // desc: action.payload.data,
-                // status: action.payload.data,
-              }
-            : goal
-        );
+        // const updatedGoal = action.payload.data;
+        // console.log(updatedGoal);
+        console.log(current(state));
+        state.goals.map((goal) => {
+          if (goal._id === action.payload._id) {
+            goal.text = action.payload.text;
+            goal.desc = action.payload.desc;
+            goal.status = action.payload.status;
+          }
+        });
       })
       .addCase(updateGoal.rejected, (state, action) => {
         state.isLoading = false;

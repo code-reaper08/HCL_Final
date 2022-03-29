@@ -3,6 +3,7 @@ import { Text, Center, VStack, Box, Flex, Button } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Brand from "../components/Brand";
+import Footer from "../components/Footer";
 function Home() {
   //   const navigate = useNavigate();
   //   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ function Home() {
           </Text>
         </Box>
       </Box>
+      <Footer />
     </Box>
   );
 }

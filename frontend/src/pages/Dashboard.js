@@ -159,7 +159,7 @@ function Dashboard() {
                 )}
               </Box>
             ) : (
-              <h3>You have not set any goals</h3>
+              <Text color="darkgray">You have not set any goals</Text>
             )}
           </Box>
 
@@ -178,7 +178,7 @@ function Dashboard() {
                 )}
               </Box>
             ) : (
-              <h3>You have not set any goals</h3>
+              <Text color="darkgray">You have not set any goals</Text>
             )}
           </Box>
           <Box>
@@ -196,7 +196,7 @@ function Dashboard() {
                 )}
               </Box>
             ) : (
-              <h3>You have not set any goals</h3>
+              <Text color="darkgray">You have not set any goals</Text>
             )}
           </Box>
         </Box>
