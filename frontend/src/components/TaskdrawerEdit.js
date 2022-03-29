@@ -77,7 +77,7 @@ function TaskdrawerEdit({ goal }) {
             <form onSubmit={onSubmit}>
               <Box>
                 <Text pb="2" fontSize="lg" htmlFor="text">
-                  Goal
+                  Task title
                 </Text>
                 <Input
                   //   width={{ md: "md" }}
@@ -110,23 +110,60 @@ function TaskdrawerEdit({ goal }) {
                 <Text fontSize="lg" pb="2" htmlFor="lang">
                   Status
                 </Text>
-                <Select
+                {status === "todo" ? (
+                  <Select
+                    mb="50"
+                    variant="filled"
+                    bgColor="lightgreen"
+                    name="languages"
+                    id="lang"
+                  >
+                    <option value="todo" selected>
+                      todo 🔴
+                    </option>
+                    <option value="inprogress">inprogress 🟡</option>
+                    <option value="done">done 🟢</option>
+                  </Select>
+                ) : status === "inprogress" ? (
+                  <Select
+                    mb="50"
+                    variant="filled"
+                    bgColor="lightgreen"
+                    name="languages"
+                    id="lang"
+                  >
+                    <option value="todo">todo 🔴</option>
+                    <option value="inprogress" selected>
+                      inprogress 🟡
+                    </option>
+                    <option value="done">done 🟢</option>
+                  </Select>
+                ) : (
+                  <Select
+                    mb="50"
+                    variant="filled"
+                    bgColor="lightgreen"
+                    name="languages"
+                    id="lang"
+                  >
+                    <option value="todo">todo 🔴</option>
+                    <option value="inprogress">inprogress 🟡</option>
+                    <option value="done" selected>
+                      done 🟢
+                    </option>
+                  </Select>
+                )}
+                {/* <Select
                   mb="50"
                   variant="filled"
                   bgColor="lightgreen"
                   name="languages"
                   id="lang"
-                  placeholder="Select state"
                 >
                   <option value="todo">todo 🔴</option>
                   <option value="inprogress">inprogress 🟡</option>
                   <option value="done">done 🟢</option>
-                </Select>
-                {/* <select name="languages" id="lang">
-                    <option value="todo">todo</option>
-                    <option value="inprogress">inprogress</option>
-                    <option value="done">done</option>
-                  </select> */}
+                </Select> */}
               </Box>
               <Box
                 display="flex"

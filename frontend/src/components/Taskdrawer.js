@@ -63,7 +63,7 @@ function Taskdrawer() {
             <form onSubmit={onSubmit}>
               <Box>
                 <Text pb="2" fontSize="lg" htmlFor="text">
-                  Goal
+                  Task title
                 </Text>
                 <Input
                   //   width={{ md: "md" }}
@@ -102,7 +102,6 @@ function Taskdrawer() {
                   bgColor="lightgreen"
                   name="languages"
                   id="lang"
-                  placeholder="Select state"
                 >
                   <option value="todo">todo 🔴</option>
                   <option value="inprogress">inprogress 🟡</option>
@@ -121,7 +120,7 @@ function Taskdrawer() {
                 mt="10"
               >
                 <Button bgColor="lightgreen" type="submit">
-                  Add Goal
+                  Add Task
                 </Button>
               </Box>
             </form>

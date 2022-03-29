@@ -145,7 +145,22 @@ export const goalSlice = createSlice({
         console.log(current(state));
         state.goals.map((goal) => {
           if (goal._id === action.payload._id) {
-            goal.text = action.payload.text;
+            if (action.payload.text) {
+              goal.text = action.payload.text;
+            } else {
+              goal.text = goal.text;
+            }
+            if (action.payload.desc) {
+              goal.desc = action.payload.desc;
+            } else {
+              goal.desc = goal.desc;
+            }
+            if (action.payload.status) {
+              goal.status = action.payload.status;
+            } else {
+              goal.status = action.payload.status;
+            }
+
             goal.desc = action.payload.desc;
             goal.status = action.payload.status;
           }
