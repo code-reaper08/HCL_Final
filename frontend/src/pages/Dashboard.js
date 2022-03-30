@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { GoThreeBars } from "react-icons/go";
+import { FaSearch } from "react-icons/fa";
 // import GoalItem from "../components/GoalItem";
 import {
   Text,
@@ -14,6 +15,9 @@ import {
   MenuItem,
   Avatar,
   IconButton,
+  Input,
+  InputLeftAddon,
+  InputGroup,
 } from "@chakra-ui/react";
 import { getGoals } from "../features/tasks/taskSlice";
 import Taskdrawer from "../components/Taskdrawer";
@@ -23,6 +27,8 @@ function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // search feature
+  const [searchTerm, setSearchTerm] = useState("");
   const { user } = useSelector((state) => state.auth);
   const { goals, isLoading, isError, message } = useSelector(
     (state) => state.goals
@@ -96,6 +102,28 @@ function Dashboard() {
               alignItems="center"
               px="10"
             >
+              <InputGroup pr="20">
+                <InputLeftAddon
+                  outline="transparent"
+                  border="none"
+                  borderLeftRadius="20"
+                  bgColor="lightgreen"
+                  // borderColor="lightgreen"
+                  children={<FaSearch />}
+                />
+                <Input
+                  // focusBorderColor="white"
+                  outline="transparent"
+                  border="darkgray"
+                  focusBorderColor="transparent"
+                  color="ivory"
+                  type="search"
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                  }}
+                  placeholder="Search Task...."
+                />
+              </InputGroup>
               <Text color="white">Hello</Text>
               <Text color="lightgreen" px="1">
                 {user && user.name}
@@ -112,6 +140,31 @@ function Dashboard() {
                 bgColor="lightgreen"
               />
               <MenuList bgColor="lightgreen">
+                <Box display={{ md: "none" }}>
+                  <InputGroup pr="20">
+                    <InputLeftAddon
+                      outline="transparent"
+                      border="none"
+                      borderLeftRadius="20"
+                      bgColor="lightgreen"
+                      // borderColor="lightgreen"
+                      children={<FaSearch />}
+                    />
+                    <Input
+                      // focusBorderColor="white"
+                      outline="transparent"
+                      border="darkgray"
+                      focusBorderColor="transparent"
+                      color="ivory"
+                      type="search"
+                      _placeholder={{ color: "black" }}
+                      onChange={(e) => {
+                        setSearchTerm(e.target.value);
+                      }}
+                      placeholder="Search Task...."
+                    />
+                  </InputGroup>
+                </Box>
                 <MenuItem display={{ md: "none" }} minH="48px">
                   <Avatar
                     boxSize="2rem"
@@ -152,13 +205,23 @@ function Dashboard() {
             </Text>
             {goals.length > 0 ? (
               <Box>
-                {goals.map((goal) =>
-                  goal.status == "todo" ? (
-                    <TaskItem key={goal._id} goal={goal} />
-                  ) : (
-                    <></>
-                  )
-                )}
+                {goals
+                  .filter((goal) => {
+                    if (searchTerm == "") {
+                      return goal;
+                    } else if (
+                      goal.text.toLowerCase().includes(searchTerm.toLowerCase())
+                    ) {
+                      return goal;
+                    }
+                  })
+                  .map((goal) =>
+                    goal.status == "todo" ? (
+                      <TaskItem key={goal._id} goal={goal} />
+                    ) : (
+                      <></>
+                    )
+                  )}
               </Box>
             ) : (
               <Text color="darkgray">You have not set any goals</Text>
@@ -171,13 +234,23 @@ function Dashboard() {
             </Text>
             {goals.length > 0 ? (
               <Box>
-                {goals.map((goal) =>
-                  goal.status == "inprogress" ? (
-                    <TaskItem key={goal._id} goal={goal} />
-                  ) : (
-                    <></>
-                  )
-                )}
+                {goals
+                  .filter((goal) => {
+                    if (searchTerm == "") {
+                      return goal;
+                    } else if (
+                      goal.text.toLowerCase().includes(searchTerm.toLowerCase())
+                    ) {
+                      return goal;
+                    }
+                  })
+                  .map((goal) =>
+                    goal.status == "inprogress" ? (
+                      <TaskItem key={goal._id} goal={goal} />
+                    ) : (
+                      <></>
+                    )
+                  )}
               </Box>
             ) : (
               <Text color="darkgray">You have not set any goals</Text>
@@ -189,13 +262,23 @@ function Dashboard() {
             </Text>
             {goals.length > 0 ? (
               <Box>
-                {goals.map((goal) =>
-                  goal.status == "done" ? (
-                    <TaskItem key={goal._id} goal={goal} />
-                  ) : (
-                    <></>
-                  )
-                )}
+                {goals
+                  .filter((goal) => {
+                    if (searchTerm == "") {
+                      return goal;
+                    } else if (
+                      goal.text.toLowerCase().includes(searchTerm.toLowerCase())
+                    ) {
+                      return goal;
+                    }
+                  })
+                  .map((goal) =>
+                    goal.status == "done" ? (
+                      <TaskItem key={goal._id} goal={goal} />
+                    ) : (
+                      <></>
+                    )
+                  )}
               </Box>
             ) : (
               <Text color="darkgray">You have not set any goals</Text>
