@@ -175,13 +175,12 @@ function Dashboard() {
                   />
                   <span>Hello {user && user.name} 👋</span>
                 </MenuItem>
-                <MenuItem>
-                  <Link to="/">Home</Link>
-                </MenuItem>
-                <MenuItem>
-                  <button className="btn" onClick={onLogout}>
-                    Logout
-                  </button>
+                <Link to="/">
+                  <MenuItem>Home</MenuItem>
+                </Link>
+
+                <MenuItem onClick={onLogout}>
+                  <button className="btn">Logout</button>
                 </MenuItem>
               </MenuList>
             </Menu>
