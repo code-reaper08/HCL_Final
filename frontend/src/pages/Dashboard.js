@@ -209,7 +209,10 @@ function Dashboard() {
                     if (searchTerm == "") {
                       return goal;
                     } else if (
-                      goal.text.toLowerCase().includes(searchTerm.toLowerCase())
+                      goal.text
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()) ||
+                      goal.desc.toLowerCase().includes(searchTerm.toLowerCase())
                     ) {
                       return goal;
                     }
@@ -238,7 +241,10 @@ function Dashboard() {
                     if (searchTerm == "") {
                       return goal;
                     } else if (
-                      goal.text.toLowerCase().includes(searchTerm.toLowerCase())
+                      goal.text
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()) ||
+                      goal.desc.toLowerCase().includes(searchTerm.toLowerCase())
                     ) {
                       return goal;
                     }
@@ -266,7 +272,10 @@ function Dashboard() {
                     if (searchTerm == "") {
                       return goal;
                     } else if (
-                      goal.text.toLowerCase().includes(searchTerm.toLowerCase())
+                      goal.text
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()) ||
+                      goal.desc.toLowerCase().includes(searchTerm.toLowerCase())
                     ) {
                       return goal;
                     }
