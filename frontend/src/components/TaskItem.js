@@ -39,7 +39,9 @@ function TaskItem({ goal }) {
         </Box>
       </Box>
       <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Text fontSize="2xl">{goal.text}</Text>
+        <Text fontSize="2xl" fontWeight="bold">
+          {goal.text}
+        </Text>
         <Text color="white">
           <Tooltip
             label={
